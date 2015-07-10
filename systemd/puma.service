@@ -1,0 +1,14 @@
+[Unit]
+Wants=redis.service
+Wants=postgresql.service
+
+[Service]
+EnvironmentFile=/etc/diaspora.conf
+ExecStart=/usr/bin/bundle-2.1 exec puma -C config/puma.rb
+KillMode=control-group
+Restart=always
+User=diaspora
+WorkingDirectory=/srv/diaspora
+
+[Install]
+WantedBy=multi-user.target

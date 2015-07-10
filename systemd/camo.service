@@ -1,0 +1,13 @@
+[Unit]
+Wants=puma.service
+
+[Service]
+EnvironmentFile=/etc/camo.conf
+ExecStart=/usr/bin/node server.js
+KillMode=control-group
+Restart=always
+User=diaspora
+WorkingDirectory=/srv/camo
+
+[Install]
+WantedBy=multi-user.target
